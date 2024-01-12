@@ -1,0 +1,77 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    {% block header %}{% endblock %}
+        
+            <section class="search-section">
+                <h2>Vous voulez louer plus de matériel ?</h2>
+                <p>Commencez votre recherche ici :</p>
+                <ul class="categories-list" id="categoriesList">
+                    <!-- Categories will be dynamically added here -->
+                </ul>
+            </section>
+
+            <!--TODO: button add + form methode get-->
+            <section class="postsection">
+                <button class="showFormButton">Add an item</button>
+
+                <form class="postForm" style="display: none;">
+                    <label for="title">Titre:</label>
+                    <input type="text" class="title" name="title" required>
+
+                    <label for="description">Description:</label>
+                    <textarea class="description" name="description" required></textarea>
+
+                    <label for="price">Prix:</label>
+                    <input type="number" class="price" name="price" required>
+
+                    <button type="button" onclick="postData()">Envoyer</button>
+                </form>
+            </section>
+        </main>
+
+        <script>
+            const buttons = document.getElementsByClassName("showFormButton");
+            const postForms = document.getElementsByClassName("postForm");
+            var activeForm = null; 
+
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener('click', function() {
+                    postForms[i].style.display = 'block';
+                    activeForm = postForms[i];
+                });
+            }
+
+            function postData() {
+                if (activeForm) {
+                    var formData = new FormData(activeForm);
+
+                    fetch('/api/items', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(Object.fromEntries(formData)),
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('La réponse pas OK');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+                } else {
+                    console.log("dans le else pas de donnée reçu")
+                }
+            }          
+        </script>
+
+{% endblock %}
+

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello InscriptionController!{% endblock %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Création de compte</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="main2">
+        <h2 class ="acctxt">Inscription</h2>
+
+        <form class="forminsc" action="{{ path('inscription_page') }}" method="post">
+            
+            <div class="forminsc2"></div>
+                <label for="username">Nom d'utilisateur:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="forminsc2">
+                <label for="password">Mot de passe:</label>
+                <input type="password" id="password" name="password" required>
+            
+            </div>
+
+            <button class="logout-btn4" type="submit">Créer le compte</button>
+            
+        </form>
+
+        {% if message is not empty %}
+            <script>
+                alert("{{ message }}");
+            </script>
+        {% endif %}
+
+    </main>
+
+</body>
+</html>
+
+{% endblock %}

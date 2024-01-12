@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EZCamp - Location de Matériel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <p class="headerP">EzCamp</p>
+        <div class="user-info">
+            <p>Connecté en tant que : [user]</p>
+            <button class="logout-btn">Déconnexion</button>
+        </div>
+    </header>
+    <main>
+        <section class="my-list">
+            <h2>Ma liste</h2>
+            <ul>
+                
+                <li>
+                    <span class="item-name">Objet 1</span>
+                    <a href="object_list.html"><button class="edit-icon" onclick="editItem(1)">&#9998;</button></a>
+                </li>
+                <li>
+                    <span class="item-name">Objet 2</span>
+                    <a href="object_list.html"><button class="edit-icon" onclick="editItem(1)">&#9998;</button></a>
+                </li>
+                <li>
+                    <span class="item-name">Objet 3</span>
+                    <a href="object_list.html"><button class="edit-icon" onclick="editItem(1)">&#9998;</button></a>
+                </li>
+                
+            </ul>
+        </section>
+        <section class="search-section">
+            <h2>Vous voulez louer plus de matériel ?</h2>
+            <p>Commencez votre recherche ici :</p>
+            <ul class="categories-list">
+                <a href="object_list.html"><p>Vélos</p></a>
+                <a href="object_list.html"><p>Tentes</p></a>
+                <a href="object_list.html"><p>Sacs de couchage</p></a>
+                <a href="object_list.html"><p>Sacs de couchag2</p></a>
+                <a href="object_list.html"><p>Utilitaires</p></a>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        function editItem(itemId) {
+            
+            console.log('Édition de l\'objet avec l\'ID : ' + itemId);
+            
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+
+{% extends "base.html.twig" %}  
+    
+{% block body %}
+    
+        <section class="search-section">
+            <h2>Liste des [selected_object_name]</h2>
+            <p>cliquez pour visualiser un objet ! </p>
+            <ul class="categories-list" id="categoriesList">
+                <!-- Categories will be dynamically added here -->
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        function editItem(itemId) {
+            console.log('Édition de l\'objet avec l\'ID : ' + itemId);
+        }
+        
+        function fetchData() {
+            fetch('https://pokeapi.co/api/v2/pokemon?limit=7')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erreur au niveau du réseau');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const categoriesList = document.getElementById('categoriesList');
+                    
+                    data.results.forEach(pokemon => {
+                        categoriesList.innerHTML += `<a href="/object"><p>${pokemon.name}</p></a>`;
+                    });
+                })
+                .catch(error => {
+                    console.error('Objets non récupérés', error);
+                });
+        }
+        window.onload = fetchData;
+    </script>
+{% endblock %}

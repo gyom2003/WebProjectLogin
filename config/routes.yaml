@@ -1,0 +1,27 @@
+# controllers:
+#     resource:
+#         path: ../src/Controller/
+#         namespace: App\Controller
+#     type: attribute
+
+#projet back
+
+#LOGIN PROJECT 
+
+main_page: 
+    path: /main
+    controller: App\Controller\MainController::main
+object_list_page: 
+    path: /category
+    controller: App\Controller\MainController::category
+object_page: 
+    path: /object
+    controller: App\Controller\MainController::object
+
+
+inscription_page: 
+    path: /inscription
+    controller: App\Controller\InscriptionController::inscriptionAction
+login_page: 
+    path: /login
+    controller: App\Controller\LoginController::loginAction
