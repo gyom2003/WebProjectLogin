@@ -47,13 +47,21 @@
                 if (activeForm) {
                     var formData = new FormData(activeForm);
 
-                    fetch('/api/items', {
+                    var itemData = {
+                        title: formData.get('title'),
+                        description: formData.get('description'),
+                        price: parseFloat(formData.get('price')),
+                    };
+
+                    console.log("les vals à envoyer en db : ", itemData)
+
+                    fetch('/api/itemss', {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify(Object.fromEntries(formData)),
+                        body: JSON.stringify(itemData),
                     })
                     .then(response => {
                         if (!response.ok) {

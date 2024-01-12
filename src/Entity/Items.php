@@ -22,8 +22,8 @@ class Items
     #[ORM\Column(length: 255)]
     public ?string $description = null;
 
-    #[ORM\Column(type: "integer")]
-    public ?int $quantity = null;
+    // #[ORM\Column(type: "integer")]
+    // public ?int $quantity = null;
 
     // #[ORM\Column]
     // public ?bool $isAvailable = null;
@@ -63,17 +63,17 @@ class Items
         return $this;
     }
 
-    public function getQuantity(): ?int
-    {
-        return $this->quantity;
-    }
+    // public function getQuantity(): ?int
+    // {
+    //     return $this->quantity;
+    // }
 
-    public function setQuantity(int $quantity): static
-    {
-        $this->quantity = $quantity;
+    // public function setQuantity(int $quantity): static
+    // {
+    //     $this->quantity = $quantity;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getPrice(): ?float
     {
